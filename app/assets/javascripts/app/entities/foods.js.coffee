@@ -21,9 +21,7 @@ TrainingLog.module "Entities", (Entitites, App, Backbone, Marionette, $, _) ->
       @totalPages = data.total_pages
       @perPage = data.limit_value
       @page = data.current_page
-      data.projects
-
-
+      data.foods
 
     onePage: ->
       +@totalPages <= 1
