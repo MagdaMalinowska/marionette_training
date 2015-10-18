@@ -16,8 +16,11 @@
 //= require underscore/underscore
 //= require backbone/backbone
 //= require marionette/lib/core/backbone.marionette
+//= require app/renderer
 //= require backbone.wreqr/lib/backbone.wreqr
 //= require backbone.babysitter/lib/backbone.babysitter
-//= require app/main
 //= require jquery
 //= require bootstrap-sprockets
+//= require_tree ./templates
+//= require_tree ./app/entities
+//= require_tree ./app/modules
