@@ -1,5 +1,3 @@
 class FoodsSerializer < ActiveModel::Serializer
-  attributes :id, :calories, :proteins, :carbs, :fats
-
-  belongs_to :meal
+  attributes :id, :calories, :proteins, :carbs, :fats, :name
 end
