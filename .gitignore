@@ -3,10 +3,9 @@
 /tmp
 .env
 config/secrets.yml
-config/database.yml
 .bowerrc
 /log
 bower.json
-.idea
+.idea/*
 
 
