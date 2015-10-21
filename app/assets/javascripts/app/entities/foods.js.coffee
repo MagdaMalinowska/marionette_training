@@ -18,13 +18,4 @@ TrainingLog.module "Entities", (Entitites, App, Backbone, Marionette, $, _) ->
     url: '/foods'
 
     parse: (data) ->
-      @totalPages = data.total_pages
-      @perPage = data.limit_value
-      @page = data.current_page
       data.foods
-
-    onePage: ->
-      +@totalPages <= 1
-
-    lastPage: ->
-      +@page == +@totalPages

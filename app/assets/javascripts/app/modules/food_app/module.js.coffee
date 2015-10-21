@@ -2,23 +2,22 @@ TrainingLog.module "FoodApp", (FoodApp, App, Backbone, Marionette, $, _) ->
 
   @startWithParent = false
 
-  FoodApp.Router = Marionette.AppRouter.extend
+  startRouter =  ->
+    new Marionette.AppRouter
 
-    appRoutes:
-      '(/)': 'foods'
-      'dashboard(/)': 'foods'
-      'new_food_path(/)': "new_food"
+      controller:
+        foods: ->
+          console.log('food')
+          view = new FoodApp.Layout
+          console.log view
+          view.foods()
 
-  API =
-    foods: ->
-      console.log('food')
-      view = new FoodApp.Layout
-      console.log view
-      view.foods()
+      appRoutes:
+        '(/)': 'foods'
+        'dashboard(/)': 'foods'
 
-    new_food: ->
-      console.log('new')
 
-  App.addInitializer ->
-    FoodApp.ModuleRouter = new FoodApp.Router
-      controller: API
+  FoodApp.start = ->
+    startRouter()
+    console.log('start')
+    Backbone.history.loadUrl Backbone.history.getFragment()

@@ -1,6 +1,18 @@
 @TrainingLog = do (Backbone, Marionette) ->
 
     App = new Marionette.Application()
+
+    App.Router = new Marionette.AppRouter
+
+        controller:
+            foodApp: ->
+                console.log('food')
+                App.FoodApp.start()
+                console.log('after start')
+
+        appRoutes:
+            'dashboard': 'foodApp'
+
     App.config =
         sitename: 'TrainingLog'
         asset_host: <%= "'#{Rails.configuration.action_controller.asset_host}'" %>
