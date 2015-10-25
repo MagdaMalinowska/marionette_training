@@ -2,21 +2,34 @@ TrainingLog.module "FoodApp", (FoodApp, App, Backbone, Marionette, $, _) ->
 
   @startWithParent = false
 
+
   FoodApp.EmptyDashaboardView = Marionette.ItemView.extend
 
     template: 'food_app/empty_dashboard'
+
+  MyView = Marionette.ItemView.extend
+
+    template: 'food_app/new_food'
 
   FoodApp.Food = Marionette.ItemView.extend
 
     tagName: 'tr'
     template: 'food_app/food'
 
+#  FoodApp.New = Marionette.Region.extend
+#
+#    el: '#modal'
+#    template: JST['food_app/new_food']
+#    onRender: ->
+#      console.log('NEWWWWW')
+#      $("#modal").modal "show"
 
   FoodApp.Foods = Marionette.CompositeView.extend
 
     template: 'food_app/foods'
     childView: FoodApp.Food
     emptyView: FoodApp.EmptyDashaboardView
+    childViewContainer: 'tbody'
 
     ui:
       foodNew: 'a.new'
@@ -31,12 +44,24 @@ TrainingLog.module "FoodApp", (FoodApp, App, Backbone, Marionette, $, _) ->
       'click @ui.foodDestroy': 'foodDestroy'
       'click @ui.foodShow': 'foodShow'
 
+
+
      foodNew: ->
-      console.log('new')
+      newFoodModalView = new FoodApp.NewFoodModal
+      console.log('foodNew')
+      modalRegion = new FoodApp.ModalRegion
+
+      modalRegion.show newFoodModalView
+
+
      foodEdit: ->
       console.log('edit')
      foodDestroy: ->
       console.log('destroy')
      foodShow: ->
       console.log('show')
+
+
+
+
 

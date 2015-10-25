@@ -19,7 +19,9 @@
         env: <%= "'#{Rails.env}'" %>
 
     App.addRegions
-        main: '#main'
+        main: '#main',
+        modalRegion:
+            selector: '#modal'
 
     App.on 'before:start', ->
 
