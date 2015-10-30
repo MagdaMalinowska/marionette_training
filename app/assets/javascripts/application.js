@@ -10,17 +10,19 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require tilt-jade/runtime
-//= require jquery/dist/jquery
-//= require jquery_ujs
-//= require underscore/underscore
-//= require backbone/backbone
-//= require marionette/lib/core/backbone.marionette
-//= require app/renderer
-//= require backbone.wreqr/lib/backbone.wreqr
-//= require backbone.babysitter/lib/backbone.babysitter
 //= require jquery
+//= require jquery_ujs
+//= require lib/underscore
+//= require lib/backbone
+//= require lib/marionette
+//= require app/renderer
+//= require app/main
 //= require bootstrap-sprockets
+//= require_tree ./templates
+//= require_tree ./app/entities
+//= require_tree ./app/modules
 //= require_tree ./templates
 //= require_tree ./app/entities
 //= require_tree ./app/modules

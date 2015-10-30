@@ -6,9 +6,7 @@
 
         controller:
             foodApp: ->
-                console.log('food')
                 App.FoodApp.start()
-                console.log('after start')
 
         appRoutes:
             'dashboard': 'foodApp'
@@ -26,7 +24,7 @@
     App.on 'before:start', ->
 
     App.on 'start', ->
-        Backbone.history.start(pushState: true, silent: true)
+        Backbone.history.start(silent: true)
         Backbone.history.loadUrl Backbone.history.getFragment()
 
     App
