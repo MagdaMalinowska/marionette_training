@@ -6,9 +6,9 @@ TrainingLog.module "Entities", (Entitites, App, Backbone, Marionette, $, _) ->
 
     defaults:
       name: 'unknown'
-      carbs: 'unknown'
-      proteins: 'unknown'
-      calories: 'unknown'
+      carbs: 0
+      proteins: 0
+      calories: 0
       id: null
 
   Entitites.Foods = Backbone.Collection.extend

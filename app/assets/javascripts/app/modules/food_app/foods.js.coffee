@@ -48,8 +48,10 @@ TrainingLog.module "FoodApp", (FoodApp, App, Backbone, Marionette, $, _) ->
 
      foodNew: ->
       newFoodModalView = new FoodApp.NewFoodModal
-      console.log('foodNew')
+      newFoodModalView.on 'model:save', (model) =>
+        @collection.add model
       modalRegion = new FoodApp.ModalRegion
+      console.log('sss')
 
       modalRegion.show newFoodModalView
 
