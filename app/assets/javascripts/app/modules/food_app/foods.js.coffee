@@ -2,6 +2,18 @@ TrainingLog.module "FoodApp", (FoodApp, App, Backbone, Marionette, $, _) ->
 
   @startWithParent = false
 
+  modalRegion = Marionette.Region.extend
+
+    initialize: ->
+      @$el.on 'hidden.bs.modal', =>
+        console.log 'hidden'
+        @empty()
+
+    onShow: ->
+      @listenTo @currentView, 'close:modal', -> @$el.modal 'hide'
+      @$el.modal "show"
+
+
 
   FoodApp.EmptyDashaboardView = Marionette.ItemView.extend
 
@@ -45,15 +57,21 @@ TrainingLog.module "FoodApp", (FoodApp, App, Backbone, Marionette, $, _) ->
       'click @ui.foodShow': 'foodShow'
 
 
+    onShow: ->
+      console.log 'lol'
+      App.addRegions
+        modalRegion:
+          selector: '#modal'
+          regionClass: modalRegion
+
+
 
      foodNew: ->
       newFoodModalView = new FoodApp.NewFoodModal
       newFoodModalView.on 'model:save', (model) =>
         @collection.add model
-      modalRegion = new FoodApp.ModalRegion
-      console.log('sss')
 
-      modalRegion.show newFoodModalView
+       App.modalRegion.show newFoodModalView
 
 
      foodEdit: ->

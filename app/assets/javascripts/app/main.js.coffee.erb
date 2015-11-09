@@ -16,10 +16,15 @@
         asset_host: <%= "'#{Rails.configuration.action_controller.asset_host}'" %>
         env: <%= "'#{Rails.env}'" %>
 
+
+
+
+
     App.addRegions
         main: '#main',
-        modalRegion:
-            selector: '#modal'
+#        modalRegion:
+#            selector: '#modal'
+#            regionClass: modalRegion
 
     App.on 'before:start', ->
 
