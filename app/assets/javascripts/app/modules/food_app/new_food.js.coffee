@@ -1,6 +1,10 @@
 TrainingLog.module "FoodApp", (FoodApp, App, Backbone, Marionette, $, _) ->
   FoodApp.NewFoodModal = Marionette.ItemView.extend
 
+    render: ->
+      Backbone.Validation.bind(@)
+
+
     template: 'food_app/new_food'
 
     events:
@@ -9,14 +13,24 @@ TrainingLog.module "FoodApp", (FoodApp, App, Backbone, Marionette, $, _) ->
     submit: (e) ->
       e.preventDefault()
       model = new App.Entities.Food()
+      that = @
       @$el.find('input[name]').each ->
         model.set @name, @value
       model.save {},
         success: (model) =>
-          $("#modal").modal('hide')
+          @trigger 'modal:close'
           @trigger "model:save", model
-        error: ->
-          console.log 'Something went wrong while saving the model'
+        error: (model, xhr, options) ->
+          that.$el.find('.errors').text(xhr.responseText)
 
-    onRender: ->
-      $("#modal").modal "show"
+
+    valid: (view, attr, selector) =>
+      @$("[data-validation=#{attr}]")
+      .removeClass('invalid')
+      .addClass('valid')
+
+    invalid: (view, attr, error, selector) =>
+      @failure(@model)
+      @$("[data-validation=#{attr}]")
+      .removeClass('valid')
+      .addClass('invalid')

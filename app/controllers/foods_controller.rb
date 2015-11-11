@@ -10,7 +10,7 @@ class FoodsController < ApplicationController
     if food.save
       render json: food, status: 200
     else
-      render json: food.errors, status: :unprocessable_entity
+      render json: food.errors.full_messages, status: :unprocessable_entity
     end
   end
 
