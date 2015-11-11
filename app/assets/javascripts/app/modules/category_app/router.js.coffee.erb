@@ -1,0 +1,22 @@
+TrainingLog.module "CategoryApp", (CategoryApp, App, Backbone, Marionette, $, _) ->
+
+  @startWithParent = false
+
+  startRouter =  ->
+    new Marionette.AppRouter
+
+      controller:
+        categories: ->
+          console.log('categories')
+          view = new CategoryApp.Layout
+          console.log view
+          view.categories()
+
+      appRoutes:
+        'categories(/)': 'categories'
+
+
+  CategoryApp.start = ->
+    startRouter()
+    console.log('start')
+    Backbone.history.loadUrl Backbone.history.getFragment()

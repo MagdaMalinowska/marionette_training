@@ -7,9 +7,13 @@
         controller:
             foodApp: ->
                 App.FoodApp.start()
+            categories: ->
+                App.CategoryApp.start()
+                console.log('start categories')
 
         appRoutes:
             'dashboard': 'foodApp'
+            'categories': 'categories'
 
     App.config =
         sitename: 'TrainingLog'

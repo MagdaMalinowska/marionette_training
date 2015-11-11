@@ -11,20 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018185607) do
+ActiveRecord::Schema.define(version: 20151111210524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "foods", force: :cascade do |t|
     t.float    "proteins"
     t.float    "carbs"
     t.float    "fats"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "calories"
     t.string   "name"
+    t.integer  "category_id"
   end
+
+  add_index "foods", ["category_id"], name: "index_foods_on_category_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
