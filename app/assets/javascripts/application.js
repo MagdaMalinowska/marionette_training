@@ -20,6 +20,7 @@
 //= require app/renderer
 //= require app/main
 //= require bootstrap-sprockets
+//= require lib/backbone-validation
 //= require_tree ./templates
 //= require_tree ./app/entities
 //= require_tree ./app/modules
