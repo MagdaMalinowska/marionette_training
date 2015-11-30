@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   resources :meals
   resources :foods
-  resources :categories
+  resources :categories do
+    resources :foods, only: :index
+  end
 
   get 'dashboard' => 'application#index'
 

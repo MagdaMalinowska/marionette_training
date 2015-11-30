@@ -17,4 +17,9 @@ TrainingLog.module "FoodApp", (FoodApp, App, Backbone, Marionette, $, _) ->
         success: =>
           @getRegion('main').show(new FoodApp.Foods(collection: collection))
 
-
+#    foods_for_category: (data) ->
+#      console.log('foods_for_category')
+#      console.log(data)
+#      collection = new App.Entities.Foods data
+#      success: =>
+#          @getRegion('foods').show(new FoodApp.Foods(collection: collection))

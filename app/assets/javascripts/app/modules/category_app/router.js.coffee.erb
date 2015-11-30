@@ -11,6 +11,10 @@ TrainingLog.module "CategoryApp", (CategoryApp, App, Backbone, Marionette, $, _)
           view = new CategoryApp.Layout
           console.log view
           view.categories()
+        foodsIndex: ->
+          console.log('foods')
+          view = new FoodApp.Layout
+          view.foods_for_category()
 
       appRoutes:
         'categories(/)': 'categories'

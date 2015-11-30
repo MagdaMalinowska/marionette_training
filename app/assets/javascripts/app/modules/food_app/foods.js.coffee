@@ -13,6 +13,7 @@ TrainingLog.module "FoodApp", (FoodApp, App, Backbone, Marionette, $, _) ->
       @listenTo @currentView, 'close:modal', -> @$el.modal 'hide'
       @$el.modal "show"
 
+  foodRegion = Marionette.Region.extend
 
 
   FoodApp.EmptyDashaboardView = Marionette.ItemView.extend
@@ -63,6 +64,8 @@ TrainingLog.module "FoodApp", (FoodApp, App, Backbone, Marionette, $, _) ->
         modalRegion:
           selector: '#modal'
           regionClass: modalRegion
+        foodRegion:
+          selector: '#foods'
 
 
 

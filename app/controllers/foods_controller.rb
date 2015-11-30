@@ -1,7 +1,14 @@
 class FoodsController < ApplicationController
 
   def index
-    render json: Food.all, each_serializer: FoodsSerializer
+    Rails.logger.info(params[:category_id])
+    if params[:category_id]
+      category = Category.find(params[:category_id])
+      render json: category.foods.all, each_serializer: FoodsSerializer
+    else
+      render json: Food.all, each_serializer: FoodsSerializer
+    end
+
   end
 
   def create

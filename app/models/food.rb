@@ -1,6 +1,5 @@
 class Food < ActiveRecord::Base
 
-  belongs_to :meal
   belongs_to :category
 
   validates :name, presence: true

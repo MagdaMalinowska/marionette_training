@@ -30,3 +30,4 @@ TrainingLog.module "Entities", (Entitites, App, Backbone, Marionette, $, _) ->
 
     parse: (data) ->
       data.foods
+
