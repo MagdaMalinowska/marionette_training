@@ -1,18 +1,39 @@
 @TrainingLog = do (Backbone, Marionette) ->
 
     App = new Marionette.Application()
+
+    App.Router = new Marionette.AppRouter
+
+        controller:
+            foodApp: ->
+                App.FoodApp.start()
+            categories: ->
+                App.CategoryApp.start()
+                console.log('start categories')
+
+        appRoutes:
+            'dashboard': 'foodApp'
+            'categories': 'categories'
+
     App.config =
         sitename: 'TrainingLog'
         asset_host: <%= "'#{Rails.configuration.action_controller.asset_host}'" %>
         env: <%= "'#{Rails.env}'" %>
 
+
+
+
+
     App.addRegions
-        main: '#main'
+        main: '#main',
+#        modalRegion:
+#            selector: '#modal'
+#            regionClass: modalRegion
 
     App.on 'before:start', ->
 
     App.on 'start', ->
-        Backbone.history.start(pushState: true, silent: true)
+        Backbone.history.start(silent: true)
         Backbone.history.loadUrl Backbone.history.getFragment()
 
     App

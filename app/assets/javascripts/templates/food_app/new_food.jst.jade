@@ -1,0 +1,26 @@
+.modal-dialog
+    .modal-content
+        .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4.modal-title
+                i.fa.fa-life-ring
+                |  Add new food
+        .modal-body
+            form
+                .form-group
+                    label(for='name') Name
+                    input#name.form-control(name='name', type='text', placeholder='Name')
+                    .help-block.hidden
+                .form-group
+                    label(for='cal') Calories
+                    input#cal.form-control(name= 'calories', type='number', placeholder='0')
+                    .help-block.hidden
+                .form-group
+                    label(for='carbs') Carbs
+                    input#carbs.form-control(name='carbs', type='number', placeholder='0')
+                    .help-block.hidden
+                 .form-group
+                     label(for='proteins') Proteins
+                     input#proteins.form-control(name='proteins', type='number', placeholder='0')
+                     .help-block.hidden
+                button.btn.btn-default(type='submit') Submit
